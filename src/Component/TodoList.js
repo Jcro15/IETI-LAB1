@@ -10,7 +10,7 @@ export class TodoList extends React.Component{
        dueDate={toDo.dueDate}/>
   );
   return (
-    <ul>{toDos}</ul>
+    <>{toDos}</>
   );
 }
     

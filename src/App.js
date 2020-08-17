@@ -1,6 +1,8 @@
 import React from 'react';
 import './App.css';
-import {TodoList} from './TodoList';
+import {TodoList} from './Component/TodoList';
+import {Card} from './Component/Card';
+import {Input} from './Component/Input';
 
 export class App extends React.Component {
 
@@ -14,33 +16,6 @@ export class App extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange=this.handleChange.bind(this);
   };
-
-  render() {
-    return (
-      <div>
-        <h3>TODO</h3>
-        <TodoList todoList={this.state.todos} />
-        <form onSubmit={this.handleSubmit}>
-          <label htmlFor="new-todo">
-            What needs to be done?
-          </label>
-          <input
-            name="text"
-            onChange={this.handleChange}
-          />
-          <input
-            name="priority"
-            onChange={this.handleChange}
-          />
-          <button>
-            Add #{this.state.todos.length + 1}
-          </button>
-        </form>
-      </div>
-    );
-  }
-
-
 
   handleChange(e) {
     let nam = e.target.name;
@@ -57,13 +32,50 @@ export class App extends React.Component {
     const newItem = {
       text: this.state.text,
       priority: this.state.priority,
-      dueDate: Date.now()
+      dueDate: new Date()
     };
     this.setState(prevState => ({
       todos: prevState.todos.concat(newItem),
       text: '',
       priority:null
     }));
+  }
+
+  render() {
+    return (
+      <>
+        <h3 style={{margin: "20px", color: "white"}}>TODO</h3>
+        <TodoList todoList={this.state.todos} />
+        <Card 
+          body = {
+            <form onSubmit={this.handleSubmit}>
+              
+              <label htmlFor="new-todo">
+                What needs to be done?
+              </label>
+              <div>
+              <Input
+                name="text"
+                onChange={this.handleChange}
+                label="Tarea"
+              />
+              </div>
+              <div>
+              <Input
+                name="priority"
+                onChange={this.handleChange}
+                label="Prioridad"
+              />
+              </div>
+              <button style={{marginTop: "20px"}}>
+                Add #{this.state.todos.length + 1}
+              </button>
+            </form>             
+          }
+          width = {350}
+        />
+      </>
+    );
   }
 }
 
