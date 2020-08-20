@@ -1,4 +1,10 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Ieti Lab - 1
+
+Autor : Juan Camilo Rojas Ortiz
+
+Al descargar el proyecto desde consola ejecute el comando npm install
+seguido del comando npm start para poder utilizar la aplicación
+
 
 ## Available Scripts
 
